@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { User } from './model/User';
+import { UserService } from './user.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'testdocker';
+  message ;
+  user: User = new User();
+constructor(private userService : UserService){
+
+}
+add()
+{
+
+  this.userService.addUser(this.user).subscribe(data=>{this.message = "user ajouter avec succes"});
+}
 }
